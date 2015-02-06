@@ -1,6 +1,6 @@
 {
   "name": "stack-assets-builder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "live builds requests for js and css using browserify and less",
   "main": "index.js",
   "scripts": {
