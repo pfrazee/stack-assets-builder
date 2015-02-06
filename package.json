@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git://github.com/pfraze/stack-assets-builder.git"
   },
+  "dependencies": {
+    "once": "~1.3.1"
+  },
   "author": "Paul Frazee <pfrazee@gmail.com>",
   "license": "MIT",
   "bugs": {
