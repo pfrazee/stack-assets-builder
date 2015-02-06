@@ -4,19 +4,21 @@ var once = require('once')
 
 module.exports = function(opts) {
   opts = opts || {}
-  function resolve(file) { return path.join(__dirname, file) }
+  if (!('enabled' in opts))
+    opts.enabled = true
+  if (!('root' in opts))
+    opts.root = __dirname
+  function resolve(file) { return path.join(opts.root, file) }
 
   // check for the built assets
   try { 
     fs.statSync(resolve('js'))
     fs.statSync(resolve('css'))
-  } catch (e) { opts = true }
-  if (opts)
-    console.log('Dev-mode: building JS and CSS in-memory on each request')
+  } catch (e) { opts.enabled = true }
 
   return function(req, res, next) {
     next = next || function(){}
-    if (!opts)
+    if (!opts.enabled)
       return next()
 
     function pathStarts(v) { return req.url.indexOf(v) === 0; }
